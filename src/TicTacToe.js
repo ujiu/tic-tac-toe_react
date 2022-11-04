@@ -22,12 +22,13 @@ function TicTacToe() {
     setSteps(steps)
     setBoardData(tempBoardData)
 
-    // 判断是否产生赢家
-    setTimeout(() => {
-      if (hasWinner(steps)) {
-        window.alert(hasWinner(steps))
-      }
-    })
+    const res = hasWinner(steps, tempBoardData)
+    if (res) {
+      setTimeout(() => {
+        window.alert(res)
+        updateBoardDataBySteps([])
+      })
+    }
   }
 
   const onRestart = () => {
@@ -67,8 +68,33 @@ function TicTacToe() {
     setUnDoSteps([...unDoSteps])
   }
 
-  function hasWinner(steps) {
+  function hasWinner(steps, boardData) {
+    const lines = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ]
+
+    const flatBoardData = boardData.flat()
+    for (let i = 0; i < lines.length; i++) {
+      const [j, k, l] = lines[i]
+      if (
+        flatBoardData[j] === flatBoardData[k] &&
+        flatBoardData[j] === flatBoardData[l] &&
+        flatBoardData[j] !== null
+      ) {
+        return `Winner is ${flatBoardData[j]}`
+      }
+    }
+
     if (steps.length === 9) return '平局'
+
+    return false
   }
 
   return (
