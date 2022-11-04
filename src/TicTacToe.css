@@ -1,0 +1,45 @@
+.game-wrapper {
+  user-select: none;
+}
+
+/* 棋盘 */
+.board-wrapper {
+  width: 150px;
+  height: 150px;
+  border-top: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+}
+.board-wrapper .row {
+  width: 150px;
+  height: 50px;
+  display: flex;
+}
+.board-wrapper .row .item {
+  width: 50px;
+  height: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  font-size: 10px;
+  cursor: pointer;
+  font-size: 20px;
+}
+.board-wrapper .row .item:hover {
+  background-color: #f3f3f3;
+}
+.board-wrapper .row .item:active {
+  background-color: #eee;
+}
+
+/* 操作 */
+.action-wrapper {
+  width: 150px;
+  display: flex;
+  margin-top: 10px;
+  justify-content: space-between;
+}
+.action-wrapper button {
+  cursor: pointer;
+}
